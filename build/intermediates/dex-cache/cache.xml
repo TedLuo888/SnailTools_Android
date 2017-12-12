@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/alexluo/alex/projects/SnailTools-Android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="73eb912c098c968a4bdbe32a5eb03e01312e5eba">
+        <dex dex="/home/alexluo/alex/projects/SnailTools-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_5c9f1a0b15a6c4827ff52bf96ac4f432a28e9977/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alexluo/alex/projects/SnailTools-Android/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/home/alexluo/alex/projects/SnailTools-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5e14e96c5465f2e7aef935c0468cfa1a3a4d6716/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alexluo/alex/projects/SnailTools-Android/app/libs/palette.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="bcee2598dbb74f6d043225a0d7e178b0c7ea4006">
+        <dex dex="/home/alexluo/alex/projects/SnailTools-Android/app/build/intermediates/transforms/dex/debug/folders/1000/2/palette_360fcc75dc0a9c1a6f8fabf3a4253ed56fe06ce3/classes.dex" />
+    </item>
+
+</items>
