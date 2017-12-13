@@ -1,8 +1,26 @@
 # SnailTools_Android
 
+
+
 本项目包含Android项目开发中常用的工具类，包括文件操作相关的FileTools,资源相关的ResourcesTools，设备相关的DeviceTools，字符串相关的StringTools等
 
+# 依赖
+  在需要依赖的模块build.gradle中添加如下代码
+```
 
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	
+
+```
+在dependencies节点中添加如下代码：
+
+```
+compile 'com.github.TedLuo888:SnailTools_Android:1.0.2'
+
+```
 
 # 一、StringTools，字符串工具类
 
