@@ -2,6 +2,7 @@ package com.alexluo.snailtools;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.Closeable;
 import java.io.File;
@@ -224,7 +225,6 @@ public class FileTools {
         File[] listFiles = srcDirFile.listFiles();
 
         if(listFiles == null || listFiles.length == 0){
-            LogTools.e(TAG,"src dir is empty  when copy dir ->"+srcDir);
             return false;
         }
 
@@ -241,7 +241,64 @@ public class FileTools {
         return true;
     }
 
+    /**
+     * 文件剪切
+     * @param srcFile
+     * @param dstFile dstFile必须是最后剪切之后的完整文件路径名
+     * @return
+     */
     public static boolean moveFile(String srcFile,String dstFile){
+        if(StringTools.isEmpty(srcFile) || StringTools.isEmpty(dstFile)){
+            return false;
+        }
+        File src = new File(srcFile);
+        File dst = new File(dstFile);
+        if(!src.exists()){
+            LogTools.e(TAG,"can't move doesn't exists file->"+srcFile);
+            return false;
+        }
+        int srcStorageIndex = src.getAbsolutePath().indexOf("/",1);
+        int dstStorageIndex = dst.getAbsolutePath().indexOf("/",1);
+        String srcStorage = srcFile.substring(0,srcStorageIndex);
+        String dstStorage = dstFile.substring(0,dstStorageIndex);
+        //如果是同磁盘剪切文件，直接使用rename即可，提高剪切速度，不同磁盘间使用
+        //先拷贝后删除的操作
+        if(!srcStorage.equals(dstStorage)){
+            return src.renameTo(new File(dstFile));
+        }else{
+            try {
+                boolean isDir = src.isDirectory();
+                boolean success = isDir?copyDir(srcFile,dstFile):copyFile(srcFile,dstFile);
+                if(success){
+                    if(isDir){
+                        deleteDir(srcFile);
+                    }else{
+                        deleteFile(srcFile);
+                    }
+                }
+                return success;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 重命名文件
+     * @param oldFile
+     * @param newName
+     * @return
+     */
+    public static boolean renameFile(File oldFile ,String newName){
+        if(StringTools.isEmpty(newName)){
+            LogTools.e(TAG,oldFile.getAbsolutePath()+" can't rename to empty");
+            return false;
+        }
+        if(oldFile.exists()){
+            return oldFile.renameTo(new File(oldFile.getParent(),newName));
+        }
+        LogTools.e(TAG,oldFile.getAbsolutePath()+" doesn't exists");
         return false;
     }
 
